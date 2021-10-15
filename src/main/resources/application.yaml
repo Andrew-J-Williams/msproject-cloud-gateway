@@ -7,7 +7,7 @@ spring:  application:    name: API-GATEWAY
         predicates:        - Path=/users/**
       - id: DEPARTMENT-SERVICE
         uri: lb://DEPARTMENT-SERVICE
-        predicates:        - Path=/departments/**
+        predicates:        - Path=/departments/**
 eureka:
   client:
     register-with-eureka: true
