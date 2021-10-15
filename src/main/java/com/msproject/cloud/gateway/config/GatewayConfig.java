@@ -10,7 +10,24 @@ public class GatewayConfig {
 
 	@Bean
 	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
-	    return builder.routes().build();
+	    return builder.routes()
+	    		.route(p -> p
+	    				.path("/users/**")
+	    				.uri("http://localhost:9002")
+	    			  )
+	    		.route(p -> p
+	    				.path("/users/")
+	    				.uri("http://localhost:9002")
+	    			  )
+	    		.route(p -> p
+	    				.path("/departments/**")
+	    				.uri("http://localhost:9001")
+	    			  )
+	    		.route(p -> p
+	    				.path("/departments/")
+	    				.uri("http://localhost:9001")
+	    			  )
+	    		.build();
 	}
 	
 }
