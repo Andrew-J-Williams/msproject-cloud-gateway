@@ -8,13 +8,13 @@ public class FallBackMethodController {
 
 	@GetMapping("/userServiceFallBack")
 	public String userServiceFallBackMethod() {
-		return "User Service is taking longer than expeceted" + 
+		return "User Service is taking longer than expeceted. " + 
 			   "Please try again later!";
 	}
 	
 	@GetMapping("/departmentServiceFallBack")
 	public String departmentServiceFallBackMethod() {
-		return "Department Service is taking longer than expeceted" + 
+		return "Department Service is taking longer than expeceted. " + 
 			   "Please try again later!";
 	}
 	
