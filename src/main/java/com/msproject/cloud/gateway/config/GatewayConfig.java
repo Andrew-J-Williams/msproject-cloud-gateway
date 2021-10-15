@@ -21,22 +21,22 @@ public class GatewayConfig {
 	public RouteLocator myRoutes(RouteLocatorBuilder builder) {
 	    return builder.routes()
 	    		.route(p -> p
-	    				.path("/users/**")
-	    				.filters(f -> f.circuitBreaker(c -> c.setName("userCircuitBreaker").setFallbackUri("/userServiceFallBack")))
-	    				.uri("http://USER-SERVICE")
+	    				.path("/users/")
+	    				.uri("http://localhost:9002")
 	    			  )
 	    		.route(p -> p
-	    				.path("/users/")
-	    				.uri("http://USER-SERVICE")
+	    				.path("/users/**")
+	    				.filters(f -> f.circuitBreaker(c -> c.setName("userCircuitBreaker").setFallbackUri("/userServiceFallBack")))
+	    				.uri("http://localhost:9002")
+	    			  )
+	    		.route(p -> p
+	    				.path("/departments/")
+	    				.uri("http://localhost:9001")
 	    			  )
 	    		.route(p -> p
 	    				.path("/departments/**")
 	    				.filters(f -> f.circuitBreaker(c -> c.setName("departmentCircuitBreaker").setFallbackUri("/departmentServiceFallBack")))
-	    				.uri("http://DEPARTMENT-SERVICE")
-	    			  )
-	    		.route(p -> p
-	    				.path("/departments/")
-	    				.uri("http://DEPARTMENT-SERVICE")
+	    				.uri("http://localhost:9001")
 	    			  )
 	    		.build();
 	}
